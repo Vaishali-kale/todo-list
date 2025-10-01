@@ -20,7 +20,6 @@ ul li {
   background: #eee;
   font-size: 18px;
   transition: 0.2s;
-  user-select: none;
 }
 
 ul li:nth-child(odd) {

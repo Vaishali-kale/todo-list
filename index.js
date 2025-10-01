@@ -1,6 +1,7 @@
 // Toggle checked when clicking on a list item
 let list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
+  console.log('&U&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
