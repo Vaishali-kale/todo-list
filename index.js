@@ -1,24 +1,36 @@
-// Toggle checked when clicking on a list item
-let list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  console.log('&U&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
+const inputbox=document.getElementById('input-box');
+const addlist=document.getElementById('list-container');
+
+function addTask(){
+ if(inputbox.value===''){
+  alert("You Must Write Somethings!..");
+ }else{
+   let li=document.createElement('li');
+   li.innerHTML=inputbox.value;
+   addlist.appendChild(li);
+   let span=document.createElement("span");
+   span.innerHTML="\u00d7";
+   li.appendChild(span);
   }
-}, false);
-
-// Add a new task
-function newElement() {
-  let li = document.createElement("li");
-  let inputValue = document.getElementById("myInput").value;
-  let t = document.createTextNode(inputValue);
-  li.appendChild(t);
-
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-
-  document.getElementById("myInput").value = "";
+  inputbox.value="";
+  saveData();
 }
+addlist.addEventListener('click',function(e){
+  if(e.target.tagName ==="LI"){
+    e.target.classList.toggle("check");
+    saveData()
+  }
+  else if(e.target.tagName==="SPAN"){
+    e.target.parentElement.remove();
+    saveData()
+  }
+},false);
+
+function saveData(){
+  localStorage.setItem("data",listContainer.innerHTML);
+}
+
+function showTask(){
+  addlist.innerHTML=localStorage.getItem("data")
+}
+showTask();
